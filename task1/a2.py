@@ -18,8 +18,12 @@ class KMeans:
         self._cluster_centers = None
 
     def _initialize_centroids(self, x):
-        indices = torch.randperm(x.shape[0])[: self.n_clusters]
-        self._cluster_centers = x[indices]
+        
+        if MPI.COMM_WORLD.rank == 0:
+            indices = torch.randperm(x.shape[0])[: self.n_clusters]
+            self._cluster_centers = x[indices]
+        MPI.COMM_WORLD.bcast(self._cluster_centers, root=0)
+        
 
     def _fit_to_cluster(self, x):
         distances = torch.cdist(x, self._cluster_centers)
@@ -66,6 +70,8 @@ class KMeans:
         return self
 
 torch.manual_seed(42)
+
+print("seed set") 
 
 rank = MPI.COMM_WORLD.rank
 size = MPI.COMM_WORLD.size
