@@ -1,4 +1,4 @@
-!/bin/bash
+#!/bin/bash
 
 #SBATCH --job-name=kmeans                  # job name
 #SBATCH --partition=single                 # queue for resource allocation
