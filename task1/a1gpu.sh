@@ -16,4 +16,4 @@ module load mpi/openmpi/4.1
 module load lib/hdf5/1.12.1-gnu-11.2-openmpi-4.1  
 source /home/kit/stud/uivsx/scalableaivenv/bin/activate  # Activate your virtual environment.
 
-srun python a1.py
+srun python a1gpu.py
