@@ -51,8 +51,8 @@ class KMeans:
                 # Compute new centroids.
                 new_cluster_centers[i : i + 1, :] = assigned_points / points_in_cluster
 
-            MPI_COMM_WORLD.Allreduce(new_cluster_centers)
-            new_cluster_centers /= MPI_COMM_WORLD.size
+            MPI.COMM_WORLD.Allreduce(new_cluster_centers)
+            new_cluster_centers /= MPI.COMM_WORLD.size
 
 
 
