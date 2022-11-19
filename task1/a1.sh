@@ -13,6 +13,6 @@ module load devel/cuda/10.2                     # Load required modules.
 module load compiler/gnu/11.2
 module load mpi/openmpi/4.1  
 module load lib/hdf5/1.12.1-gnu-11.2-openmpi-4.1  
-source ../../scalableaivenv/bin/activate  # Activate your virtual environment.
+source /home/kit/stud/uivsx/scalableaivenv/bin/activate  # Activate your virtual environment.
 
 srun python a1.py
