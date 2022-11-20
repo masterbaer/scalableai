@@ -52,11 +52,13 @@ class KMeans:
                     1.0, torch.iinfo(torch.int64).max
                 )
 
+                MPI.COMM_WORLD.allreduce(assigned_points)
+                MPI.COMM_WORLD.allreduce(points_in_cluster)
+
                 # Compute new centroids.
                 new_cluster_centers[i : i + 1, :] = assigned_points / points_in_cluster
 
-            MPI.COMM_WORLD.Allreduce(new_cluster_centers)
-            new_cluster_centers /= MPI.COMM_WORLD.size
+            
 
 
 
